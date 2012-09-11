@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -13,6 +14,8 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
@@ -99,6 +102,31 @@ public class CountdownTimerActivity extends Activity {
 				}
 			}
 
+		});
+
+		btnStart.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent(mContext, TimerService.class);
+				intent.putExtra("counter", timeLeft);
+				startService(intent);
+				btnStart.setEnabled(false);
+				btnStop.setEnabled(true);
+				sb.setEnabled(false);
+			}
+		});
+
+		btnStop.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				Intent i = new Intent(mContext, TimerService.class);
+				mContext.stopService(i);
+				btnStop.setEnabled(false);
+				btnStart.setEnabled(true);
+				sb.setEnabled(true);
+			}
 		});
 	}
 
