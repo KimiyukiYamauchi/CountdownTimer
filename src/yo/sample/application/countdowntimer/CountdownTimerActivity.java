@@ -128,6 +128,17 @@ public class CountdownTimerActivity extends Activity {
 				sb.setEnabled(true);
 			}
 		});
+
+		((Button) findViewById(R.id.buttonSettings))
+				.setOnClickListener(new OnClickListener() {
+
+					@Override
+					public void onClick(View v) {
+						Intent intent = new Intent(CountdownTimerActivity.this,
+								Preferences.class);
+						startActivity(intent);
+					}
+				});
 	}
 
 	private static void showTime(int timeSeconds) {
