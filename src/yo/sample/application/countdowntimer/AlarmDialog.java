@@ -7,6 +7,7 @@ import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Vibrator;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 
@@ -46,9 +47,10 @@ public class AlarmDialog extends Activity {
 				rt.play();
 			}
 		}
-		if (prefs.getBoolean("Vibrator", true)) {
+		Log.d(ACTIVITY_SERVICE, "prefs.getBoolean(\"Vibrator, true\")) = "
+				+ prefs.getBoolean("vibrator", true));
+		if (prefs.getBoolean("vibrator", true)) {
 			vib.vibrate(new long[] { 0, 1000, 500, 1000, 500, 1000 }, -1);
 		}
 	}
-
 }

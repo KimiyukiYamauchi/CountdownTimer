@@ -8,7 +8,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.IBinder;
 import android.os.PowerManager;
-import android.util.Log;
 
 public class TimerService extends Service {
 
@@ -51,7 +50,7 @@ public class TimerService extends Service {
 				handler.post(new Runnable() {
 					@Override
 					public void run() {
-						Log.d(ACCOUNT_SERVICE, "counter = " + counter);
+						// Log.d(ACCOUNT_SERVICE, "counter = " + counter);
 						if (counter == -1) {
 							timer.cancel();
 							if (wl.isHeld()) {
